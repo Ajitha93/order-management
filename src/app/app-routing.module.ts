@@ -4,6 +4,7 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
 
 const routes: Routes = [
   { path: 'orders', component: OrderDetailsComponent },
+  { path: '**', redirectTo: 'orders' } 
 ];
 
 @NgModule({

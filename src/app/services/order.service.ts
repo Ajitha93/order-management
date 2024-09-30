@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable,map } from 'rxjs';
 
 export interface ProductDetail {
-  productId: number;
+  name: string;
+  price:number;
   quantity: number;
 }
 
-export interface Order {
-  id: number;
+export interface Order { 
+  id:number;
   customerName: string;
   orderDate: string;
   products: ProductDetail[];
@@ -23,7 +24,14 @@ export class OrderService {
 
   constructor(private http: HttpClient) {}
 
-  getOrderDetails(orderId: number): Observable<Order> {
-    return this.http.get<Order>(`${this.apiUrl}/${orderId}`);
+  getOrderDetails(): Observable<Order[]> {
+    return this.http.get<any>(this.apiUrl).pipe(
+      map(response => 
+        response.$values.map((order: any) => ({ // Specify the type for order
+          ...order,
+          products: order.products.$values // Extract the products array
+        }))
+      )
+    );
   }
 }
