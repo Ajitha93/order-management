@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'order-management';
+  showCreateOrderForm = false;
+  showGrid=true;
+
+  toggleCreateOrderForm(): void {
+    this.showCreateOrderForm = !this.showCreateOrderForm;
+    this.showGrid=!this.showGrid;
+  }
 }

@@ -1,1 +1,16 @@
 <router-outlet></router-outlet>
+
+
+
+<div class="container mt-5">
+    <button class="btn btn-primary mb-3" (click)="toggleCreateOrderForm()">
+      {{ showCreateOrderForm ? 'Back to Orders' : 'Create Order' }}
+    </button>
+    <div *ngIf="showCreateOrderForm">
+      <app-create-order></app-create-order>
+    </div>
+ </div>
+
+ <div *ngIf="showGrid">
+    <app-order-details></app-order-details>
+</div>

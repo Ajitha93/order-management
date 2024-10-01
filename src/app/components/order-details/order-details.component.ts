@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectorRef, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OrderService, Order } from '../../services/order.service';
 import * as jQuery from 'jquery';
@@ -14,6 +14,7 @@ declare var $: any;
 })
 export class OrderDetailsComponent implements OnInit {
   orders: Order[] = [];
+  // @Input() showGrid: boolean; // Receive message from parent
 
   constructor(private orderService: OrderService,private cdr: ChangeDetectorRef) { }
 
