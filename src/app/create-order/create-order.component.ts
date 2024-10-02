@@ -14,6 +14,7 @@ export class CreateOrderComponent implements OnInit {
   orderForm: FormGroup;
   customers: any[] = [];
   products: ProductResponse[] = [];
+  successMessage:any;
 
   constructor(private fb: FormBuilder,private orderService: OrderService) {
     this.orderForm = this.fb.group({
@@ -63,9 +64,36 @@ export class CreateOrderComponent implements OnInit {
 
   onSubmit(): void {
     if (this.orderForm.valid) {
-      console.log(this.orderForm.value);
-      // Here you can call your API to save the order
-      // this.http.post('YOUR_API_ENDPOINT', this.orderForm.value).subscribe(response => { ... });
+      const orderData = {
+        customerId: this.orderForm.value.customerName,
+        orderDate: this.orderForm.value.orderDate,
+        products: this.orderForm.value.products.map((prod: any) => ({
+          productId: prod.id,
+          quantity: prod.quantity
+        }))
+      };
+
+      console.log(orderData); // Log the prepared data for debugging
+
+     // Call the service method to submit the order
+      this.orderService.submitOrder(orderData).subscribe(
+        response => {
+          console.log('Order submitted successfully', response);
+          // Handle success, e.g., redirect or show a success message
+          this.successMessage = "Order created successfully!";
+          this.orderForm.reset(); // Optionally reset the form
+        },
+        error => {
+          console.error('Error submitting order', error);
+          // Handle error, e.g., show an error message
+        }
+      );
     }
+      
   }
+    
+  clearSuccessMessage() {
+    this.successMessage = null; // Clear the success message
+  }
+  
 }

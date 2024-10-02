@@ -9,6 +9,11 @@
 </head>
 <body>
 
+    <div *ngIf="successMessage" class="alert alert-success">
+        {{ successMessage }}
+        <button type="button" class="btn-close" aria-label="Close" (click)="clearSuccessMessage()">Close</button>
+    </div>
+
 <div class="container mt-5" style="max-width: 600px; padding: 20px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
     <h2 style="margin-bottom: 20px; color: #333;">Create Order</h2>
     <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">

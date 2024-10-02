@@ -25,15 +25,16 @@ export class OrderService {
   private apiUrl = 'https://localhost:7151/api/order'; 
   private custUrl='https://localhost:7189/api/order/customer';
   private prodUrl='https://localhost:7189/api/order/product';
+  private createUrl='https://localhost:7189/api/order/';
 
   constructor(private http: HttpClient) {}
 
   getOrderDetails(): Observable<Order[]> {
     return this.http.get<any>(this.apiUrl).pipe(
       map(response => 
-        response.$values.map((order: any) => ({ // Specify the type for order
+        response.map((order: any) => ({ // Specify the type for order
           ...order,
-          products: order.products.$values // Extract the products array
+          products: order.products// Extract the products array
         }))
       )
     );
@@ -45,5 +46,9 @@ export class OrderService {
 
   getProducts(): Observable<ProductResponse[]> {
     return this.http.get<ProductResponse[]>(this.prodUrl);
+  }
+
+  submitOrder(orderData: any): Observable<any> {
+    return this.http.post(this.createUrl, orderData);
   }
 }
