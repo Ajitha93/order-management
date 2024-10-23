@@ -24,6 +24,13 @@ jobs:
       - name: Build Angular app
         run: npm run build --prod
 
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.azureclientid }}
+          client-secret: ${{ secrets.azureclientsecret }}
+          tenant-id: ${{ secrets.azuretenantid }}
+
       - name: Deploy to Azure Web App
         uses: Azure/webapps-deploy@v2
         with:
