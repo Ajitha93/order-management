@@ -36,5 +36,5 @@ jobs:
         with:
           app-name: 'OrderManagementCanApp'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AZUREWEBAPPPUBLISHPROFILE }}
+          publish-profile: ${{ secrets.orderpublishprofile }}
           package: ./dist/*
