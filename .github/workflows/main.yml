@@ -3,7 +3,7 @@ name: CI/CD for Angular App
 on:
   push:
     branches:
-      - main
+      - OrderManagementAngular
 
 jobs:
   build:
