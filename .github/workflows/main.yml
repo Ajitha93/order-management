@@ -27,10 +27,11 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZURECLIENTID }}
+          creds: '{"clientId":"${{ secrets.AZURECLIENTID }}","clientSecret":"${{ secrets.AZURECLIENTSECRET }}","subscriptionId":"${{ secrets.AZURESUBSCRIPTIONID }}","tenantId":"${{ secrets.AZURETENANTID }}"}'
+          #client-id: ${{ secrets.AZURECLIENTID }}
           #auth-type: ${{ secrets.AZURECLIENTSECRET }}
-          tenant-id: ${{ secrets.AZURETENANTID }}
-          subscription-id: ${{ secrets.AZURESUBSCRIPTIONID }}
+          #tenant-id: ${{ secrets.AZURETENANTID }}
+          #subscription-id: ${{ secrets.AZURESUBSCRIPTIONID }}
 
       - name: Deploy to Azure Web App
         uses: Azure/webapps-deploy@v2
