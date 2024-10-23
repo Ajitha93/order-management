@@ -28,8 +28,9 @@ jobs:
         uses: azure/login@v1
         with:
           client-id: ${{ secrets.AZURECLIENTID }}
-          auth-type: ${{ secrets.AZURECLIENTSECRET }}
+          #auth-type: ${{ secrets.AZURECLIENTSECRET }}
           tenant-id: ${{ secrets.AZURETENANTID }}
+          subscription-id: ${{ secrets.AZURESUBSCRIPTIONID }}
 
       - name: Deploy to Azure Web App
         uses: Azure/webapps-deploy@v2
