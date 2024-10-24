@@ -22,9 +22,10 @@ jobs:
         run: npm install
 
       - name: Build Angular app
-        run: npm run build --prod
+        run: npm run build 
 
-      
+      - name: List dist directory
+        run: ls -la ./dist/order-management 
 
       - name: Deploy to Azure Web App
         uses: Azure/webapps-deploy@v2
