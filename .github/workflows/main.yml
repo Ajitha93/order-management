@@ -32,4 +32,4 @@ jobs:
           app-name: 'OrderManagementCanApp'
           slot-name: 'production'
           publish-profile: ${{ secrets.ORDERPUBLISHPROFILE }}
-          package: ./dist/*
+          package: ./dist/order-management/*
