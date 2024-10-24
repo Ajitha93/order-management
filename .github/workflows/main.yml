@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout code
@@ -24,14 +24,7 @@ jobs:
       - name: Build Angular app
         run: npm run build --prod
 
-      - name: Login to Azure
-        uses: azure/login@v1
-        with:
-          creds: '{"clientId":"${{ secrets.AZURECLIENTID }}","clientSecret":"${{ secrets.AZURECLIENTSECRET }}","subscriptionId":"${{ secrets.AZURESUBSCRIPTIONID }}","tenantId":"${{ secrets.AZURETENANTID }}"}'
-          #client-id: ${{ secrets.AZURECLIENTID }}
-          #auth-type: ${{ secrets.AZURECLIENTSECRET }}
-          #tenant-id: ${{ secrets.AZURETENANTID }}
-          #subscription-id: ${{ secrets.AZURESUBSCRIPTIONID }}
+      
 
       - name: Deploy to Azure Web App
         uses: Azure/webapps-deploy@v2
