@@ -25,7 +25,7 @@ jobs:
         run: npm run build 
 
       - name: List dist directory
-        run: ls -la ./dist/order-management 
+        run: ls ./dist/order-management 
 
       - name: Deploy to Azure Web App
         uses: Azure/webapps-deploy@v2
