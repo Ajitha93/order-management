@@ -23,10 +23,10 @@ export interface Order {
 
 export class OrderService {
   private apiUrl = 'https://orderservicecanadaapp.azurewebsites.net/api/order/GetOrders'; 
-  private custUrl='http://orderupsertservicecanadaapp.azurewebsites.net/api/order/customer';
-  private prodUrl='http://orderupsertservicecanadaapp.azurewebsites.net/api/order/product';
-  private createUrl='http://orderupsertservicecanadaapp.azurewebsites.net/api/order/';
-  
+  private custUrl='https://orderupsertservicecanadaapp.azurewebsites.net/api/order/customer';
+  private prodUrl='https://orderupsertservicecanadaapp.azurewebsites.net/api/order/product';
+  private createUrl='https://orderupsertservicecanadaapp.azurewebsites.net/api/order/';
+
 
   constructor(private http: HttpClient) {}
 
