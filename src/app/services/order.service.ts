@@ -26,7 +26,6 @@ export class OrderService {
   private custUrl='https://orderupsertservicecanadaapp.azurewebsites.net/api/order/customer';
   private prodUrl='https://orderupsertservicecanadaapp.azurewebsites.net/api/order/product';
   private createUrl='https://orderupsertservicecanadaapp.azurewebsites.net/api/order/';
-
   
   constructor(private http: HttpClient) {}
 
